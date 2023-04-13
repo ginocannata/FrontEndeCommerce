@@ -11,6 +11,7 @@ import { ListaDeProductosComponent } from './components/lista-de-productos/lista
 import { CarritoDeComprasComponent } from './components/carrito-de-compras/carrito-de-compras.component';
 import { PagoComponent } from './components/pago/pago.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

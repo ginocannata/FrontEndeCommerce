@@ -1,50 +1,61 @@
-<div class="container">
-  <h2 class="text-center">Carrito de compras</h2>
-  <hr>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">My Ecommerce Site</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/lista">Productos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/carrito">Carrito</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div *ngIf="productosEnCarrito.length > 0">
   <div class="row">
-    <div class="col-md-8">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Precio unitario</th>
-            <th>Subtotal</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let producto of productosEnCarrito">
-            <td>{{ producto.nombre }}</td>
-            <td>{{ producto.cantidad }}</td>
-            <td>{{ producto.precio | currency }}</td>
-            <td>{{ producto.cantidad * producto.precio | currency }}</td>
-            <td>
-              <button class="btn btn-danger" (click)="eliminarProducto(producto)">
-                <i class="fas fa-trash-alt"></i> Eliminar
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Resumen de compra</h5>
-          <hr>
-          <div *ngIf="productosEnCarrito.length === 0" class="text-center">
-            <p>No hay productos en el carrito</p>
-          </div>
-          <div *ngIf="productosEnCarrito.length > 0">
-            <p>Total productos: {{ totalProductos }}</p>
-            <p>Total a pagar: {{ totalPagar | currency }}</p>
-            <button class="btn btn-success btn-block">Realizar compra</button>
-          </div>
-        </div>
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Total</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of productosEnCarrito">
+              <td>{{ producto.nombre }}</td>
+              <td>{{ producto.precio | currency }}</td>
+              <td>{{ producto.cantidad }}</td>
+              <td>{{ producto.cantidad * producto.precio | currency }}</td>
+              <td><button (click)="eliminarProducto(producto)">Eliminar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="total">
+        <p>Total Productos: {{ totalProductos }}</p>
+        <p>Total a pagar: {{ totalPagar | currency }}</p>
+      </div>
+      <div class="botones">
+        <button (click)="vaciarCarrito()">Vaciar Carrito</button>
       </div>
     </div>
   </div>
 </div>
+<div *ngIf="productosEnCarrito.length === 0">
+  <p>No hay productos en el carrito</p>
+</div>
+
+
 
   

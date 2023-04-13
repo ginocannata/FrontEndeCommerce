@@ -1,29 +1,40 @@
-<div class="product-list">
-    <div class="product-card">
-      <img src="https://picsum.photos/200/300" alt="Product image">
-      <div class="product-details">
-        <h2>Product name</h2>
-        <p>Description of the product</p>
-        <button>Add to cart</button>
-      </div>
-    </div>
-    
-    <div class="product-card">
-      <img src="https://picsum.photos/200/300" alt="Product image">
-      <div class="product-details">
-        <h2>Product name</h2>
-        <p>Description of the product</p>
-        <button>Add to cart</button>
-      </div>
-    </div>
-    
-    <div class="product-card">
-      <img src="https://picsum.photos/200/300" alt="Product image">
-      <div class="product-details">
-        <h2>Product name</h2>
-        <p>Description of the product</p>
-        <button>Add to cart</button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">My Ecommerce Site</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/lista">Productos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/carrito">Carrito</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <h2 class="text-center">Productos disponibles</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let producto of productos">
+      <div class="card h-100">
+        <img src="{{ producto.image }}" class="card-img-top" alt="{{ producto.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ producto.title }}</h5>
+          <p class="card-text">{{ producto.description }}</p>
+          <p class="card-text">{{ producto.price | currency }}</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary" (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
+
   
