@@ -1,0 +1,21 @@
+<div class="container">
+    <form class="form-inline my-2 my-lg-0" (ngSubmit)="buscarProducto()">
+        <div class="input-group">
+            <input class="form-control mr-sm-2" type="search" [(ngModel)]="busqueda" name="busqueda"
+                placeholder="Buscar productos" aria-label="Buscar productos">
+            <div class="input-group-append">
+                <button class="btn btn-primary my-2 my-sm-0"[routerLink]="['/resultado-busqueda', busqueda]" type="submit">Buscar</button>
+            </div>
+        </div>
+    </form>
+
+    <div *ngIf="productosEncontrados && productosEncontrados.length > 0">
+        <div class="list-group mt-3">
+            <a href="#" class="list-group-item list-group-item-action" *ngFor="let producto of productosEncontrados">
+                {{ producto.nombre }}
+            </a>
+        </div>
+    </div>
+
+    
+</div>

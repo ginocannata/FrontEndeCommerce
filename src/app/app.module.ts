@@ -12,6 +12,9 @@ import { CarritoDeComprasComponent } from './components/carrito-de-compras/carri
 import { PagoComponent } from './components/pago/pago.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { BuscadorComponent } from './components/buscador/buscador.component';
+import { ResultadoBusquedaComponent } from './components/resultado-busqueda/resultado-busqueda.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     ListaDeProductosComponent,
     CarritoDeComprasComponent,
-    PagoComponent
+    PagoComponent,
+    BuscadorComponent,
+    ResultadoBusquedaComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatToolbarModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

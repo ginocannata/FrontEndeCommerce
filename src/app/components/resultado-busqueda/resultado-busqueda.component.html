@@ -1,0 +1,14 @@
+<h2>Resultados de búsqueda</h2>
+<div *ngIf="productosEncontrados.length === 0">No se encontraron productos</div>
+<ul *ngIf="productosEncontrados.length > 0" class="producto-list">
+    <li *ngFor="let producto of productosEncontrados">
+        <div class="producto-card">
+            <img [src]="producto.imagenUrl" alt="Imagen de {{producto.nombre}}">
+            <div class="producto-info">
+                <h3>{{producto.nombre}}</h3>
+                <p class="precio">{{producto.precio | currency}}</p>
+
+            </div>
+        </div>
+    </li>
+</ul>

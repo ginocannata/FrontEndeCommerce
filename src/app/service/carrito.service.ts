@@ -65,7 +65,7 @@ export class CarritoService {
     }
   }
 
-  getProductosEnCarrito(): Producto[] {
+  getProductos(): Producto[] {
     return this.productosEnCarrito;
   }
 
