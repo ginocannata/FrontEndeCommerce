@@ -1,1 +1,64 @@
-<p>pago works!</p>
+<app-navbar></app-navbar>
+<div class="row">
+    <div class="col-md-8">
+        <h2>Resumen de compra</h2>
+        <ul class="producto-list">
+            <li *ngFor="let producto of productosEnCarrito">
+                <div class="producto-card">
+                    <img [src]="producto.imagenUrl" alt="Imagen de {{producto.nombre}}">
+                    <div class="producto-info">
+                        <h3>{{producto.nombre}}</h3>
+                        <p class="precio">{{producto.precio | currency}}</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <p>Total a pagar: {{ totalPagar | currency }}</p>
+    </div>
+</div>
+
+
+
+<form [formGroup]="formPago" (ngSubmit)="onSubmit()" class="row g-3">
+    <div class="col-md-6">
+        <label for="nombre" class="form-label">Nombre del titular de la tarjeta:</label>
+        <input type="text" id="nombre" formControlName="nombre" class="form-control">
+        <div *ngIf="formPago.get('nombre')?.invalid && (formPago.get('nombre')?.dirty || formPago.get('nombre')?.touched)"
+            class="invalid-feedback">
+            <div *ngIf="formPago.get('nombre')?.errors?.['required']">El nombre es requerido</div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label for="numeroTarjeta" class="form-label">Número de tarjeta:</label>
+        <input type="text" id="numeroTarjeta" formControlName="numeroTarjeta" class="form-control">
+        <div *ngIf="formPago.get('numeroTarjeta')?.invalid && (formPago.get('numeroTarjeta')?.dirty || formPago.get('numeroTarjeta')?.touched)"
+            class="invalid-feedback">
+            <div *ngIf="formPago.get('numeroTarjeta')?.errors?.['required']">El número de tarjeta es requerido</div>
+            <div *ngIf="formPago.get('numeroTarjeta')?.errors?.['pattern']">El número de tarjeta debe ser de 16 dígitos
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label for="fechaExpiracion" class="form-label">Fecha de expiración (mm/aa):</label>
+        <input type="text" id="fechaExpiracion" formControlName="fechaExpiracion" class="form-control">
+        <div *ngIf="formPago.get('fechaExpiracion')?.invalid && (formPago.get('fechaExpiracion')?.dirty || formPago.get('fechaExpiracion')?.touched)"
+            class="invalid-feedback">
+            <div *ngIf="formPago.get('fechaExpiracion')?.errors?.['required']">La fecha de expiración es requerida</div>
+            <div *ngIf="formPago.get('fechaExpiracion')?.errors?.['pattern']">La fecha de expiración debe tener el
+                formato mm/aa</div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label for="codigoSeguridad" class="form-label">Código de seguridad (3 dígitos):</label>
+        <input type="text" id="codigoSeguridad" formControlName="codigoSeguridad" class="form-control">
+        <div *ngIf="formPago.get('codigoSeguridad')?.invalid && (formPago.get('codigoSeguridad')?.dirty || formPago.get('codigoSeguridad')?.touched)"
+            class="invalid-feedback">
+            <div *ngIf="formPago.get('codigoSeguridad')?.errors?.['required']">El código de seguridad es requerido</div>
+            <div *ngIf="formPago.get('codigoSeguridad')?.errors?.['pattern']">El código de seguridad debe tener 3
+                dígitos</div>
+        </div>
+        <div>
+            <button type="submit" [disabled]="formPago.invalid">Pagar {{totalPagar | currency}}</button>
+          </div>
+          
+    </div>

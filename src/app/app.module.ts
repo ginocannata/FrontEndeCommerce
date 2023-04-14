@@ -12,9 +12,10 @@ import { CarritoDeComprasComponent } from './components/carrito-de-compras/carri
 import { PagoComponent } from './components/pago/pago.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { ResultadoBusquedaComponent } from './components/resultado-busqueda/resultado-busqueda.component';
+import { GraciasComponent } from './components/gracias/gracias.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ResultadoBusquedaComponent } from './components/resultado-busqueda/resu
     CarritoDeComprasComponent,
     PagoComponent,
     BuscadorComponent,
-    ResultadoBusquedaComponent
+    ResultadoBusquedaComponent,
+    GraciasComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { ResultadoBusquedaComponent } from './components/resultado-busqueda/resu
     MatToolbarModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

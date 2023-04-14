@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../model/producto';
 import { CarritoService } from '../../service/carrito.service';
 import { ProductosService } from 'src/app/service/productos.service';
+import { Router } from '@angular/router';
 
 
 
@@ -17,7 +18,7 @@ export class CarritoDeComprasComponent implements OnInit {
 
 
 
-  constructor(private carritoService: CarritoService, private productoService:ProductosService) { }
+  constructor(private carritoService: CarritoService, private productoService:ProductosService, private router:Router) { }
 
   ngOnInit(): void {
     this.productosEnCarrito = this.carritoService.obtenerProductos();
@@ -64,6 +65,10 @@ export class CarritoDeComprasComponent implements OnInit {
     this.productosEnCarrito = this.carritoService.obtenerProductos();
     this.calcularTotalProductos();
     this.calcularTotalPagar();
+  }
+  irAPagar(){
+    this.router.navigate(['/pago']);
+
   }
 
 }
