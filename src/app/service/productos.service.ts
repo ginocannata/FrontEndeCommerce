@@ -17,7 +17,7 @@ export class ProductosService {
     return this.http.get(`${this.API_URL}/${id}`);
   }
   buscarProducto(busqueda:string): Observable<Producto[]>{
-    const URL = `${this.API_URL}?q=${busqueda}`;
+    const URL = `https://fakestoreapi.com/products?title=${busqueda}`;
     return this.http.get<Producto[]>(URL);
 
   }

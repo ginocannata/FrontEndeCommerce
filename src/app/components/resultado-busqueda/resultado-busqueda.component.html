@@ -1,14 +1,17 @@
+<app-navbar></app-navbar>
 <h2>Resultados de búsqueda</h2>
 <div *ngIf="productosEncontrados.length === 0">No se encontraron productos</div>
-<ul *ngIf="productosEncontrados.length > 0" class="producto-list">
-    <li *ngFor="let producto of productosEncontrados">
-        <div class="producto-card">
-            <img [src]="producto.imagenUrl" alt="Imagen de {{producto.nombre}}">
-            <div class="producto-info">
-                <h3>{{producto.nombre}}</h3>
-                <p class="precio">{{producto.precio | currency}}</p>
-
+<div *ngIf="productosEncontrados.length > 0" class="row">
+    <div *ngFor="let producto of productosEncontrados" class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="card">
+            <img [src]="producto.imagenUrl" alt="Imagen de {{producto.nombre}}" class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <h5 class="card-title">{{producto.nombre}}</h5>
+                <p class="card-text precio">{{producto.precio | currency}}</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary" (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
             </div>
         </div>
-    </li>
-</ul>
+    </div>
+</div>
